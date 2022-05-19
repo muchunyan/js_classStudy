@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font_jkfrxjogs7/iconfont.css">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 400px;
+            height: 30px;
+            margin: 100px auto;
+            border: 1px solid pink;
+        }
+
+        .down {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 25px;
+            border: 1px solid rgb(230, 238, 12);
+        }
+
+        .up {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 25px;
+            border: 1px solid transparent;
+        }
+
+        p {
+            position: absolute;
+            top: -10px;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box upbox">
+        <input type="password" value="请输入密码">
+        <label class="iconfont">&#xe652;</label>
+        <p>请输入6-16位密码</p>
+    </div>
+    <script>
+        var inp = document.querySelector('input');
+        var tag = 0;
+        inp.onclick = function () {
+            if (tag == 0) {
+                inp.className = 'up'; tag = 1;
+                if (this.innerHTML == null) this.style.value = "请输入密码";
+            }
+            else if (tag == 1) {
+                inp.className = 'down'; tag = 0;
+                if (this.innerHTML != null) inp.style.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .scrollbox {
+            position: absolute;
+            top: 270px;
+            left: 1368px;
+            width: 50px;
+            height: 140px;
+            background-color: #de7c6d;
+        }
+
+        .scrollbox .returntop {
+            display: none;
+        }
+
+        .header {
+            height: 200px;
+            background-color: pink;
+            margin-bottom: 10px;
+        }
+
+        .banner {
+            height: 400px;
+            background-color: hotpink;
+            margin-bottom: 10px;
+        }
+
+        .main {
+            height: 800px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w">
+        <div class="header">header</div>
+        <div class="banner">banner
+            <div class="scrollbox">
+                <div class="returntop">
+                    返回顶部
+                </div>
+            </div>
+        </div>
+        <div class="main">main</div>
+    </div>
+
+    <script>
+        var scrollbox = document.querySelector('.scrollbox');
+        var banner = document.querySelector('.banner');
+        var main = document.querySelector('.main');
+        var returntop = document.querySelector('.returntop');
+        var maintop = main.offsetTop;
+        var bannertop = banner.offsetTop;//最好写在外面，只获取滚动请前的top值，比较安全
+        var scrolltop = scrollbox.offsetTop - banner.offsetTop;
+        document.addEventListener('scroll', function () {//必须用document，表示页面滚动触发
+            console.log(window.pageYOffset);
+            console.log(banner.offsetHeight);
+            if (window.pageYOffset >= bannertop) {//必须用window,表示窗口被卷去的部分
+                scrollbox.style.position = 'fixed';
+                scrollbox.style.top = scrolltop + 'px';
+            } else {
+                scrollbox.style.position = 'absolute';
+                scrollbox.style.top = '300px';
+            }
+            if (window.pageYOffset >= maintop) {
+                returntop.style.display = 'block';
+            } else {
+                returntop.style.display = 'none';
+
+            }
+        })
+        returntop.addEventListener('click', function () {
+            // window.scroll(0, 0);//很快的回到顶部
+            animate(window, 0);//调用动画函数缓慢返回顶部
+        })
+
+        function animate(obj, target, callback) {
+            //为了防止动画叠加 需要保证只有一个动画执行
+            clearInterval(obj.timer);//使用obj.timer是防止一直开辟新空间浪费资源
+            obj.timer = setInterval(function () {
+                var step = (target - window.pageYOffset) / 10;//页面滚动的距离window.pageYOffset
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (window.pageYOffset == target) {
+                    clearInterval(obj.timer);
+                    // if (callback) {
+                    //     //如果存在回调函数则调用
+                    //     callback();
+                    // }
+                    callback && callback();
+                }
+                window.scroll(0, window.pageYOffset + step);
+            }, 15)
+        }
+    </script>
+</body>
+
+</html>

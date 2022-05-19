@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: url(img/bg01.webp) no-repeat top center;
+        }
+
+        ul {
+            width: 500px;
+            margin: 50px auto;
+        }
+
+        ul li {
+            float: left;
+            width: 100px;
+            list-style: none;
+        }
+
+        img {
+            width: 100px;
+        }
+
+        .bg {
+            background-color: pink;
+        }
+
+        .wrap {
+            width: 300px;
+            height: 300px;
+            margin: 50px auto;
+        }
+
+        table td {
+            border: 1px solid #ccc;
+
+        }
+    </style>
+    <script src="js/jQuery.min.js"></script>
+</head>
+
+<body>
+    <button>排他思想</button>
+    <button>排他思想</button>
+    <button>排他思想</button>
+    <button>排他思想</button>
+    <button>排他思想</button>
+
+    <ul class="baidu">
+        <li><img src="img/bg01.webp" alt=""></li>
+        <li><img src="img/bg02.webp" alt=""></li>
+        <li><img src="img/bg03.webp" alt=""></li>
+        <li><img src="img/bg04.webp" alt=""></li>
+    </ul>
+
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>姓名</th>
+                <th>姓名</th>
+                <th>姓名</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="wrap">
+        <table>
+            <thead>
+                <tr>
+                    <td><input type="checkbox" id="j_cball"></td>
+                    <td>商品</td>
+                    <td>价格</td>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>ipad</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>ipad1</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>ipad2</td>
+                    <td>4000</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>ipad3</td>
+                    <td>1000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        //btn是一个伪数组
+        // var btn = document.getElementsByTagName('button');
+        // for (var i = 0; i < btn.length; i++) {
+        //     btn[i].onclick = function () {
+        //         for (var i = 0; i < btn.length; i++) {
+        //             btn[i].style.backgroundColor = '';
+        //         }
+        //         this.style.backgroundColor = 'pink';
+        //     }
+        // }
+
+        //jQuery排他思想
+        $(function () {
+            $('button').click(function () {
+                $(this).css('background', 'pink');
+                $(this).siblings().css('background', '')
+            })
+        })
+
+        //更换背景
+        var imgs = document.querySelector('.baidu').querySelectorAll('img');
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function () {
+                document.body.style.backgroundImage = 'url(' + this.src + ')';
+            }
+        }
+        //表格经过变色
+        //1、获取tbody里面的行
+        var trs = document.querySelector('tbody').querySelectorAll('tr');
+        for (var i = 0; i < trs.length; i++) {
+            trs[i].onmouseover = function () {
+                this.className = 'bg';
+            }
+            trs[i].onmouseout = function () {
+                this.className = '';
+            }
+        }
+        //全选反选
+        //1、获得全选按钮
+        var j_cball = document.getElementById('j_cball');
+        //2、获得其他按钮
+        var tbs = document.getElementById('j_tb').getElementsByTagName('input');
+        j_cball.onclick = function () {
+            for (var i = 0; i < tbs.length; i++) {
+                tbs[i].checked = this.checked;
+            }
+        }
+        //有一个不被选中则全选失效
+        for (var i = 0; i < tbs.length; i++) {
+            tbs[i].onclick = function () {
+                var flag = true;
+                for (var i = 0; i < tbs.length; i++) {
+                    if (!tbs[i].checked)//如果有一个没有被选中
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                j_cball.checked = flag;
+            }
+        }
+    </script>
+</body>
+
+</html>

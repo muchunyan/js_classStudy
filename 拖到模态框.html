@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font_jkfrxjogs7/iconfont.css">
+    <title>Document</title>
+    <style>
+        .input_content {
+            display: none;
+            position: fixed;
+            top: 200px;
+            left: 500px;
+            width: 500px;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 30px;
+            border: 1px solid #999;
+            box-shadow: 5px 5px 3px rgba(0, 0, 0, .3);
+            /* margin: 200px auto; */
+            z-index: 9999;
+        }
+
+        .title {
+            width: 100%;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+            font-size: 28px;
+        }
+
+        .guanbi {
+            position: absolute;
+            top: 5px;
+            left: 460px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .guanbi::after {
+            content: '\e723';
+            width: 30px;
+            height: 30px;
+            font-size: 26px;
+            font-family: iconfont;
+            color: #999;
+        }
+
+        .bg {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .3);
+        }
+
+        .login {
+            width: 300px;
+            height: 30px;
+            border: 1px solid #999;
+
+        }
+
+        label {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+        }
+
+        .submit {
+            width: 200px;
+            height: 30px;
+            margin: 30px 140px;
+        }
+
+        .login-box {
+            margin: 50px 20px 20px;
+        }
+
+        .login-box1 {
+            margin: 0 20px 20px;
+        }
+
+        .link {
+            width: 300px;
+            margin: 0 auto;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="link"><a id="link" href="javascript:;">点击弹出登录框</a></div>
+    <div class="input_content">
+        <div class="title">会员登录</div>
+        <div class="login-box">
+            <label for=""> 用户名：</label><input class="login" type="text" placeholder="请输入用户名" name="username">
+        </div>
+        <div class="login-box1">
+            <label for="">密码：</label><input class="login" type="password" placeholder="请输入密码" name="password">
+        </div>
+        <div>
+            <input class="submit" type="button" value="登录">
+        </div>
+        <div class="guanbi"></div>
+    </div>
+    <div class="bg"></div>
+</body>
+<script>
+    var box = document.querySelector('.input_content');
+    var gb = document.querySelector('.guanbi');
+    var bg = document.querySelector('.bg');
+    var link = document.querySelector('.link');
+    var title = document.querySelector('.title');
+
+    link.addEventListener('click', function () {
+        bg.style.display = 'block';
+        box.style.display = 'block';
+    })
+    gb.addEventListener('click', function () {
+        bg.style.display = 'none';
+        box.style.display = 'none';
+    })
+    title.addEventListener('mousedown', function (e) {
+        var x = e.pageX - box.offsetLeft;
+        var y = e.pageY - box.offsetTop;
+        document.addEventListener('mousemove', move)
+        function move(e) {
+            box.style.left = e.pageX - x + 'px';
+            box.style.top = e.pageY - y + 'px';
+        }
+        document.addEventListener('mouseup', function () {
+            document.removeEventListener('mousemove', move);
+        })
+    })
+</script>
+
+</html>

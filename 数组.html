@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var arr = ['red', 'blue', 'red', 'green', 'pink', 'red'];
+        // var chars = arr.indexOf('red');
+        // var count = 0;
+        // while (chars != -1) {
+        //     console.log(chars);
+        //     count++;
+        //     chars = arr.indexOf('red', chars + 1);
+        // }
+        // console.log(count);
+        // var str = 'abaasdffggghhjjkkgfddsssss3444343';
+        // console.log(str.length);
+        // console.log(str[0], str[3], str[5], str[9]);
+        // if (str.indexOf('i') == -1) { console.log("不存在此字符"); } else { console.log("存在此字符"); }
+        // if (str.indexOf('c') == -1) { console.log("不存在此字符"); } else { console.log("存在此字符"); }
+        // if (str.indexOf('b') == -1) { console.log("不存在此字符"); } else { console.log("存在此字符"); }
+        //查找出现次数最多的字符及次数
+        var str = 'abaasdffggghhjjkkgfddsssss3444343';
+        var o = {};
+        for (var i = 0; i < str.length; i++) {
+            var chars = str.charAt(i);
+            if (o[chars]) {
+                o[chars]++;
+            } else {
+                o[chars] = 1;
+            }
+        }
+        var max = 0; var c = '';
+        for (var k in o) {
+            if (o[k] > max) {
+                max = o[k];
+                c = k;
+            }
+        }
+        console.log(max, c);
+        // var str = 'abaasdffggghhjjkkgfddsssss3444343';
+
+        // var chars1 = str.indexOf('ss');
+
+        // while (chars1 != -1) {
+        //     str = str.replace(str[chars1], 'p');
+        //     chars1 = str.indexOf('ss', chars1 + 1);
+        // }
+        // console.log(str);
+        //console.log(str.slice(1, 5));
+
+        // var arr = [1500, 1200, 2000, 2100, 1800];
+        // function getArr(arr) {
+        //     var newArr = [];
+        //     for (i = 0; i < arr.length; i++) {
+        //         if (arr[i] < 2000) {
+        //             newArr.push(arr[i]);
+        //         }
+        //     }
+        //     return newArr;
+        // }
+        // console.log(getArr(arr));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

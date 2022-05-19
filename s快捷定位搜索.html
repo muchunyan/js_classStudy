@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .search {
+            width: 200px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .con {
+            display: none;
+            position: relative;
+            width: 150px;
+            height: 30px;
+            font-size: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .con::after {
+            position: absolute;
+            top: 29px;
+            left: 40px;
+            content: '';
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-top-color: #ccc;
+            border-style: solid;
+        }
+
+        input {}
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div class="con">123</div>
+        <input type="text" placeholder="请输入单号" value="">
+    </div>
+    <!-- <input type="search"> -->
+</body>
+<script>
+    var inp = document.querySelector('input');
+    var con = document.querySelector('.con');
+    inp.addEventListener('keyup', function () {
+        if (this.value == '') {
+            con.style.display = 'none';
+        } else {
+            con.style.display = 'block';
+            con.innerHTML = this.value;
+        }
+    })
+    inp.addEventListener('blur', function () {
+        con.style.display = 'none';
+    })
+    inp.addEventListener('focus', function () {
+        if (this.value !== '')
+            con.style.display = 'block';
+    })
+    // var inp = document.querySelector('input');
+    // document.addEventListener('keyup', function (e) {
+    //     if (e.keyCode == 83) {
+    //         inp.focus();
+    //     }
+    // })
+</script>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font_jkfrxjogs7/iconfont.css">
+    <title>Document</title>
+    <style>
+        /* .box {
+            position: relative;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        input {
+            width: 350px;
+            height: 30px;
+            border: 0;
+            outline: none;
+            background-color: #fff;
+
+        }
+
+        .iconfont {
+            position: absolute;
+            width: 24px;
+            right: 10px;
+            font-size: 24px;
+            top: 2px;
+        }
+
+        .box1 {
+            height: 200px;
+            width: 150px;
+            background-color: pink;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <div class="box">
+        <input id="psw" type="password">
+        <label id="eye" class="iconfont">&#xe630;</label>
+    </div> -->
+    <input type="text" value="手机">
+    <script>
+        var input = document.querySelector('input');
+        input.onfocus = function () {
+            if (this.value == '手机') {
+                this.value = '';
+            }
+        }
+        input.onblur = function () {
+            if (this.value == '') {
+                this.value = "手机"
+            }
+        }
+        //获取对象
+        // var eye = document.getElementById('eye');
+        // var psw = document.getElementById('psw');
+        // //绑定事件
+        // var flag = 0;
+        // eye.onclick = function () {
+        //     if (flag == 0) {
+        //         psw.type = 'text';
+        //         eye.innerHTML = "&#xe610";
+        //         flag = 1;
+        //     } else {
+        //         psw.type = 'password';
+        //         eye.innerHTML = "&#xe630;";
+        //         flag = 0;
+        //     }
+        // }
+        //获取对象
+
+    </script>
+</body>
+
+</html>

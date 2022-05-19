@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: rgb(51, 47, 47);
+            color: #fff
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hours">1</span>
+        <span class="mins">2</span>
+        <span class="seconds">3</span>
+    </div>
+    <script>
+        //获取元素
+        var h = document.querySelector('.hours');
+        var m = document.querySelector('.mins');
+        var s = document.querySelector('.seconds');
+        var inputtime = +new Date('2022-04-13 12:00:00');
+        countDown();
+        setInterval(countDown, 1000);
+        function countDown() {
+            var nowtime = + new Date();
+            var times = (inputtime - nowtime) / 1000;//转化为秒            
+            var hours = parseInt(times / 60 / 60 % 24);//不足两位数时补0
+            hours = hours < 10 ? '0' + hours : hours;
+            h.innerHTML = hours;
+            var mins = parseInt(times / 60 % 60);
+            mins = mins < 10 ? '0' + mins : mins;
+            m.innerHTML = mins;
+            var seds = parseInt(times % 60);
+            seds = seds < 10 ? '0' + seds : seds;
+            s.innerHTML = seds;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font_jkfrxjogs7/iconfont.css">
+    <link rel="stylesheet" href="css/base.css">
+    <title>Document</title>
+    <style>
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .shortcut {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            background: #f1f1f1;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .style_red {
+            color: #c40000;
+        }
+
+        .shortcut .fl span {
+            margin-right: 13px;
+            color: #666666;
+        }
+
+        .shortcut ul li {
+            float: left;
+            color: #666666;
+        }
+
+        .shortcut ul li:nth-child(even) {
+            width: 1px;
+            height: 12px;
+            background-color: #666666;
+            margin: 9px 15px 0;
+        }
+
+        .downlist {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            top: 29px;
+            right: 250px;
+            width: 90px;
+            border: 1px solid pink;
+            border-bottom: 0;
+            background-color: pink;
+        }
+
+        .downlist ul li a {
+            display: block;
+            color: #000;
+            padding: 10px 15px;
+            border-bottom: 2px solid pink;
+        }
+
+        .downlist ul li a:hover {
+            color: #fff;
+            background-color: rgb(76, 198, 145);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="shortcut">
+        <div class="w">
+            <div class="fl">
+                <span>品优购欢迎您！</span><span>请登录</span>
+                <a class="style_red" href="register.html">免费注册</a>
+            </div>
+            <div class="fr">
+                <ul>
+                    <li>我的订单</li>
+                    <li></li>
+                    <li class="arrow_icon">我的品优购<i class="iconfont">&#xe616;</i>
+                    </li>
+                    <li></li>
+                    <li>品优购会员</li>
+                    <li></li>
+                    <li>企业采购</li>
+                    <li></li>
+                    <li class="arrow_icon">关注品优购<i class="iconfont">&#xe616;</i></li>
+                    <li></li>
+                    <li class="arrow_icon us">客户服务<i class="iconfont">&#xe616;</i>
+                    </li>
+                    <li></li>
+                    <li class="arrow_icon">网站导航<i class="iconfont">&#xe616;</i></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+    <div style="background-color: #c40000;">saf</div>
+    <div class="downlist">
+        <ul class="xl">
+            <li><a href="#">vip服务</a></li>
+            <li><a href="#">vip服务</a></li>
+            <li><a href="#">vip服务</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    var use = document.querySelector('.us');
+    var list = document.querySelector('.downlist');
+    use.onmouseout = function () {
+        list.style.display = 'none';
+    }
+    use.onmouseover = function () {
+        list.style.display = 'block';
+    }
+
+</script>
+
+</html>

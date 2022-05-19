@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul li {
+            width: 300px;
+
+        }
+
+        ul li a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="2"></textarea>
+    <button>发送</button><button class="del">删除</button>
+    <ul>
+        <li>熊大</li>
+        <li>熊二</li>
+        <li>熊三</li>
+    </ul>
+</body>
+<script>
+    var btn = document.querySelector('button');
+    var ul = document.querySelector('ul');
+    var txt = document.querySelector('textarea');
+    btn.onclick = function () {
+        if (txt.value == '') {
+            alert("您还没有输入");
+            return false;
+        } else {
+            var li = document.createElement('li');//创建节点
+            li.innerHTML = txt.value + "<a href='javascript:;'>删除<a/>";
+            ul.insertBefore(li, ul.children[0]);//插入节点
+            var as = document.querySelectorAll('a');
+            for (var i = 0; i < as.length; i++) {//删除节点
+                as[i].onclick = function () {
+                    ul.removeChild(this.parentNode);
+                }
+            }
+        }
+    }
+
+    var lili = ul.children[0].cloneNode(true);//复制节点
+    ul.appendChild(lili);
+    //删除节点
+    var btn = document.querySelector('.del');
+    var ul = document.querySelector('ul');
+    btn.onclick = function () {
+        if (ul.children.length == 0) {
+            alert("您还没有输入");
+            this.disabled = true;
+        } else {
+            ul.removeChild(ul.children[0]);
+        }
+    }
+</script>
+
+</html>

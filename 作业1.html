@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //冒泡排序
+        var arr = [2, 6, 1, 7, 4];
+        var temp = 0;
+        for (var i = 0; i <= arr.length - 1; i++) {//控制趟数
+            for (var j = 0; j <= arr.length - 1 - i; j++) {//控制每次循环的交换次数
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+
+        }
+        console.log(arr);
+        // var yue = 100;
+        // do {
+        //     var n = parseInt(prompt('请输入您的操作数：' + '\n' + '1、存钱' + '\n' + '2、取钱' + '\n' + '3、显示余额' + '\n' + '4、退出'));
+        //     if (n == 1) {
+        //         var n1 = parseInt(prompt('请输入存钱金额'));
+        //         yue += n1;
+        //     } else if (n == 2) {
+        //         var n2 = parseInt(prompt('请输入取钱金额'));
+        //         yue = yue - n2;
+        //     } else if (n == 3) {
+        //         alert('余额为：' + yue);
+        //     } else {
+        //         alert('正在退出----');
+        //     }
+        // } while (n != 4)
+        //简易计数器
+        function calculator(choice, num1, num2) {
+            if (choice == 1) {
+                return num1 + num2;
+            }
+            if (choice == 2) {
+                return num1 - num2;
+            }
+            if (choice == 3) {
+                return num1 * num2;
+            }
+            if (choice == 4) {
+                return num1 / num2;
+            }
+        }
+        do {
+            var n = parseInt(prompt('请输入您的选择：\n 1、加法\n 2、减法\n 3、乘法\n 4、除法\n 5、退出'));
+            if (n != 5) {
+                var num1 = parseFloat(prompt('请输入第一个操作数：'));
+                var num2 = parseFloat(prompt('请输入第二个操作数：'));
+                var answer = calculator(n, num1, num2);
+                alert('结果为' + answer);
+                console.log(answer);
+            } else {
+                alert('正在退出....');
+            }
+        } while (n != 5)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

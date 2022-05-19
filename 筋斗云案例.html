@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            position: relative;
+            width: 600px;
+            height: 40px;
+            background-color: pink;
+            margin: 50px auto;
+        }
+
+        ul {
+            position: relative;
+        }
+
+        ul li {
+            float: left;
+            padding: 10px 10px;
+            list-style: none;
+        }
+
+        .cloud {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 85px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, .3);
+        }
+
+        .current {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <span class="cloud"></span>
+        <ul>
+            <li class="current">教资力量</li>
+            <li>企业文化</li>
+            <li>企业文化</li>
+            <li>企业文化</li>
+            <li>企业文化</li>
+            <li>企业文化</li>
+        </ul>
+    </div>
+</body>
+<script src="js/animate.js"></script>
+<script>
+    var cloud = document.querySelector('.cloud');
+    var lis = document.querySelectorAll('li');
+    for (var i = 0; i < lis.length; i++) {
+        //会出现抖动 在ul中加入相对定位解决
+        //定义一个current变量用于存放cloud的点击后的位置
+        var current = 0;
+        lis[i].addEventListener('mouseenter', function () {
+            animate(cloud, this.offsetLeft);
+        })
+        lis[i].addEventListener('mouseleave', function () {
+            animate(cloud, current);
+        })
+        lis[i].addEventListener('click', function () {
+            current = this.offsetLeft;
+            animate(cloud, current);
+        })
+    }
+
+
+</script>
+
+</html>

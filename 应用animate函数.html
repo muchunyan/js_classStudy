@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider {
+            /* display: none; */
+            position: absolute;
+            width: 150px;
+            height: 40px;
+            background-color: pink;
+            top: 0;
+            left: 50px;
+        }
+
+        .box {
+            position: relative;
+            float: right;
+            width: 50px;
+            height: 40px;
+            background-color: pink;
+            margin-top: 300px;
+            font-size: 24px;
+            text-align: center;
+            color: rgb(216, 103, 103);
+        }
+    </style>
+    <script src="js/animate.js"></script>
+</head>
+
+<body>
+
+    <div class="box">
+        <span>⬅</span>
+        <div class="slider">个人主页</div>
+    </div>
+</body>
+<script>
+    var box = document.querySelector('.box');
+    var slider = document.querySelector('.slider');
+    box.addEventListener('mouseenter', function () {
+        animate(slider, -slider.offsetWidth, function () {
+            box.firstElementChild.innerHTML = '➡';
+        })
+    })
+    box.addEventListener('mouseleave', function () {
+        animate(slider, box.offsetWidth, function () {
+            box.firstElementChild.innerHTML = '⬅';
+        })
+    })
+
+</script>
+
+</html>
